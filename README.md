@@ -4,10 +4,10 @@ socket.io-chat-demo
 基于node.js + socket.io + express + jade做的一个聊天室，现在很多同学总是喊着求这种聊天室，最近闲来就找时间做了这么个东西，里面有很多基础的功能，如需要其它自定制功能，可在目前制定的协议基础上继续开发。<br/>
 
 请自己安装相关的组件 , npm install ***，目前未上传node_moudle目录<br/>
-启动调用node socket.io-chat.js,一些相关的抽取的配置在socket.io-chat-loginpro.js文件中<br/>
+启动调用node socket.io-chat.js,一些相关的抽取的配置在socket.io-chat-loginpro.js文件中<hr/>
 
 
-简单的帮助文档
+简单的帮助文档<br/>
 /**@author samoin
 *  @since 2013-05-21
 *  @desc 简单的运行，可以用demo包里的html和js，将他们复制出来放到外层目录，也可以直接启动服务"node socket.io-chat"。目前的demo提供简单的聊天室的功能，即登录，聊天，重复登录的处理等。管理功能提供了管理人员的登录以及相关查询的接口。socket.io-chat-loginpro.js文件中为目前抽取出来的可配置参数，里面有详细的备注和说明。
