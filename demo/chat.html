@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<!--<meta http-equiv="X-UA-Compatible" content="IE=10">-->
+<meta http-equiv="Content-Type" content="textml; charset=utf-8">
+  <TITLE>聊天室</TITLE>
+  <META NAME="Generator" CONTENT="EditPlus">
+  <META NAME="Author" CONTENT="">
+  <META NAME="Keywords" CONTENT="">
+  <META NAME="Description" CONTENT="">
+  <script src="http://127.0.0.1:443/socket.io/socket.io.js"></script>
+  <script src="http://tg.zhengjin99.com/script/jquery-1.6.1.min.js"></script>
+  <script src="./browser.js?v=4"></script>
+  <style>
+	#chat_msg{
+		border: 1px solid #333333;
+		height: 400px;
+		overflow-x: hidden;
+		overflow-y: scroll;
+		width: 400px;
+	}
+	#to_id{
+		width:50px;
+	}
+  </style>
+ </HEAD>
+
+ <BODY>
+ <div id="login">
+<form>
+<tr>
+<td>请输入要进入的聊天室：<input id="chatName"/></td>
+</tr>
+<tr>
+<td>请输入您的用户名：<input id="userName"/></td>
+</tr>
+<tr>
+<td><input type="button" value="登录" onclick="$(this).hide();chat.login();"/></td>
+</tr>
+</form>
+ </div>
+  <div id="chat" style="display:none;">
+	<div>
+		如需对某人说话，则在第一个输入框内填写用户名，所有人则为空
+	</div>
+	<div id="chat_msg" style="">
+
+    </div>
+	<div>
+	<input type="text" id="to_id" value=""/>
+	<input type="text" id="talk_info" /><input type="button" value="发送" onclick="chat.talk()"/>
+    </div>
+  </div>
+ </BODY>
+</HTML>

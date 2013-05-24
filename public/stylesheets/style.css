@@ -1,0 +1,110 @@
+body {
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	/**width: 100px;*/
+}
+
+/**li {
+	height: 20px;
+	line-height: 20px;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	cursor: pointer;
+	padding: 0;
+	float: left;
+	width: 150px;
+	border-bottom: 0;
+	text-align: center;
+}*/
+
+#user_list {
+	padding: 0;
+	margin: 0;
+}
+
+.groupname {
+	width: 100%;
+}
+
+.groupname span {
+	margin-left: 6px;
+}
+
+.groupfriends {
+	display: none;
+}
+
+.friends {
+	
+}
+
+.maskDiv {
+	filter: alpha(opacity =                                 0); /* IE */
+	-moz-opacity: 0.0; /* Moz + FF */
+	opacity: 0.50;
+	position: absolute;
+	z-index: 999999;
+	background-color: #999;
+	width: 100%;
+	height: 100%;
+}
+
+.maskDivContent {
+	position: absolute;
+	z-index: 1000000;
+	left: 35%;
+	top: 35%;
+}
+
+.friends p {
+	float: left;
+	margin: 0;
+	padding: 0;
+}
+
+.freindslogo {
+	
+}
+
+#onlineListUl{
+	border:solid 1px #333;
+	width : 800px;
+	height:600px;
+	overflow-y:scroll;
+	padding : 10;
+	
+}
+
+#onlineListUl li{
+	height: 20px;
+	line-height: 20px;
+	padding: 0;
+	margin: 0;
+	list-style: none; 
+}
+
+#onlineListUl li p{
+	float:left;
+	border:solid 1px #333;
+	margin:0;
+	padding:0;
+	width : 15%;
+}
+
+#chat_msg{
+		border: 1px solid #333333;
+		height: 400px;
+		overflow-x: hidden;
+		overflow-y: scroll;
+		width: 400px;
+	}
+#to_id{
+	width:50px;
+}

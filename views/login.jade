@@ -1,0 +1,15 @@
+script(type="text/javascript", src="javascripts/jquery-1.6.1.min.js")
+script(type="text/javascript", src="javascripts/login.js")
+link(rel="stylesheet",href="stylesheets/style.css")
+
+<div id="loginDiv">
+if errInfo != ""
+  <p style="color:red;">#{errInfo}</p>
+<form id="loginForm" action="./login" onSubmit="return checkLogin();" method="post">
+<table>
+<tr><td>请输入用户名</td><td><input type="text" name="pass" id="pass"/></td></tr>
+<tr><td>请输入密码</td><td><input type="password" name="pwd" id="pwd"/></td></tr>
+<tr><td colspan="2"><input type="submit" value="登录"/></td></tr>
+</table>
+</form>
+</div>

@@ -1,0 +1,113 @@
+script(type="text/javascript", src="/javascripts/jquery-1.6.1.min.js")
+link(rel="stylesheet",href="/stylesheets/style.css")
+script(type="text/javascript")
+  var isTalkWithNewWin = false;//对话框是否为弹出新窗口
+  var baseTalkWinUrl = "/user/talk/id/";
+  var talkWinUrl = baseTalkWinUrl;
+  $(document).ready(function() {
+    $(".groupname").bind("click", function() {
+      var myGroupNames = $(this).next();
+      if (!$(this).hasClass("group_off")) {
+        $(this).addClass("group_off");
+        $(this).removeClass("group_on");
+        $(this).find("img").attr("src", "/images/arrow_off.gif");
+        myGroupNames.hide();
+      } else {
+        $(this).removeClass("group_off");
+        $(this).addClass("group_on");
+        $(this).find("img").attr("src", "/images/arrow_on.gif");
+        myGroupNames.show();
+      }
+    });
+    $(".friends").live("dblclick", function() {
+      var userId = $(this).attr("userId");
+      talkWinUrl = baseTalkWinUrl + userId + ",#{from.id}" + ",#{from.nickName}";
+      if (isTalkWithNewWin) {
+        if (parent.document) {
+          parent.location.href = talkWinUrl;
+        } else {
+          location.href = talkWinUrl;
+        }
+      } else {
+        $("#imJrjIframe").attr("src",talkWinUrl);
+        $("#mask").show();
+      }
+    });
+  });
+script(src="/socket.io/socket.io.js")
+script
+  var socket = io.connect('http://127.0.0.1:8081');
+  var curId = '#{from.id}';
+  var tempInfoObj = {};
+  socket.on('connect', function () {
+    //发送初始化信息
+    socket.emit("init",{id:'#{from.id}' , passport:'#{from.pass}' , nickName:'#{from.nickName}'});
+    //接受登录验证的信息
+    socket.on('loginInfo', function (data) {
+      if(data.state < 0){
+        alert(data.msg);
+        socket.disconnect();
+      }else{
+        //alert(">>" + data.msg);
+      }
+    });
+    //接受通讯的信息
+    socket.on('message', function (data) {
+      // 收到普通的对话消息
+      if(data.state == 1){
+        var msg = data.msg;
+        var fromId = data.fromId;
+        var toId = data.toId;
+        var formName = data.fromName;
+        var toName = data.toName;
+        var html = "";
+        if(curId == fromId){
+          html += "我：<br/>" + msg + "<br/>";
+          imJrjIframe.window.document.getElementById("msgDivJRJIMSendTextarea").value = "";
+        }
+        if(curId == toId){
+          html += formName + "：<br/>" + msg + "<br/>";
+        }
+        if(imJrjIframe.window.document.getElementById("msgDivJRJIMSendTextarea")){//窗口打开状态
+          imJrjIframe.window.document.getElementById("msgDivJRJIMMsg").innerHTML = imJrjIframe.window.document.getElementById("msgDivJRJIMMsg").innerHTML + html;
+          imJrjIframe.$('#msgDivJRJIMMsg').scrollTop(10000000);
+        }else{//窗口未打开
+          tempInfoObj[fromId] = html;
+          alert(formName + "给您发来了新的消息");
+        }
+      }
+    });
+  });
+  // 通过socket.io发送消息
+  function sendMsgBySocket(msg,fromId,toId){
+    socket.emit("message",{fromId : $("#fromId").val() , toId : $("#toId").val() , msg : $("#msg").val() , fromName : $("#fromName").val() , toName : $("#toName").val()});
+  }
+
+<input type="hidden" id="msg"/>
+<input type="hidden" id="fromId"/>
+<input type="hidden" id="toId"/>
+<input type="hidden" id="fromName"/>
+<input type="hidden" id="toName"/>
+<a href="#" style="display:none;" id="sendMsg" onclick="sendMsgBySocket()"></a>
+<div style="position: absolute; z-index: 1;">
+<ul id="user_list">
+<li class="groupname group_off"><img src="/images/arrow_off.gif" /><span>我的好友</span>
+</li>
+<li class="groupfriends">
+<ul>
+-each user in userList
+  <li class="friends" userId="#{user._id}"><p class="freindslogo">
+  <img src="/images/user.jpg" width="22" height="22" />
+  </p>
+  <p>#{user.nickName}</p>
+  </li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="mask" style="display: none;">
+<div class="maskDiv"></div>
+<div class="maskDivContent" id="maskCotent">
+<iframe id="imJrjIframe" name="imJrjIframe" src="" marginheight="0" marginwidth="0" scrolling="no" frameborder="no" allowTransparency="true" style="height: 300px; width: 400px;"></iframe>
+</div>
+</div>

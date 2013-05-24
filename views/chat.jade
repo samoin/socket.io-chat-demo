@@ -1,0 +1,23 @@
+script(type="text/javascript", src="/javascripts/jquery-1.6.1.min.js")
+link(rel="stylesheet",href="/stylesheets/style.css")
+script(type="text/javascript", src="./socket.io/socket.io.js")
+script(type="text/javascript", src="./javascripts/browser.js?v=4")
+
+<div id="login">
+<form>
+<tr><td>请输入要进入的聊天室：<input id="chatName"/></td></tr>
+<tr><td>请输入您的用户名：<input id="userName"/></td></tr>
+<tr><td><input type="button" value="登录" onclick="$(this).hide();chat.login();"/></td></tr>
+</form>
+</div>
+<div id="chat" style="display:none;">
+<div>
+如需对某人说话，则在第一个输入框内填写用户名，所有人则为空
+</div>
+<div id="chat_msg" style="">
+</div>
+<div>
+<input type="text" id="to_id" value=""/><input type="text" id="talk_info" />
+<input type="button" value="发送" onclick="chat.talk()"/>
+</div>
+</div>
