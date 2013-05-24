@@ -9,13 +9,13 @@ socket.io-chat-demo
 *  @since 2013-05-21
 *  @desc 简单的运行，可以用demo包里的html和js，将他们复制出来放到外层目录，也可以直接启动服务"node socket.io-chat"。目前的demo提供简单的聊天室的功能，即登录，聊天，重复登录的处理等。管理功能提供了管理人员的登录以及相关查询的接口。socket.io-chat-loginpro.js文件中为目前抽取出来的可配置参数，里面有详细的备注和说明。
 */<hr/>
-关于url的文档：
-1.访问聊天室
-http://ip:port/chat
-输入房间和用户名登录即可
-2.http://ip:port/onlineUserInfoList?pass=xx&room=xx
-根据参数的匹配，pass为用户名，room为房间，可提供相关的查询，该url返回的结果中，含有对应的信息
-如下：
+关于url的文档：<br/>
+1.访问聊天室<br/>
+http://ip:port/chat<br/>
+输入房间和用户名登录即可<br/>
+2.http://ip:port/onlineUserInfoList?pass=xx&room=xx<br/>
+根据参数的匹配，pass为用户名，room为房间，可提供相关的查询，该url返回的结果中，含有对应的信息<br/>
+如下：<br/>
 {
 　 "test2": {
    "ff": [
@@ -33,14 +33,14 @@ http://ip:port/chat
 　     }
     ]
   }
-}
-3.http://ip:port/onlineUserList?pass=xx&room=xx
+}<br/>
+3.http://ip:port/onlineUserList?pass=xx&room=xx<br/>
 根据参数的匹配，pass为用户名，room为房间，可提供相关的查询，该url返回的结果中，含有对应的个数统计
-如下：
+如下：<br/>
 {
   "test2": {
     "ff": 2
   }
-}
-4.http://localhost:443/login
-管理后台的登录入口，如需增加用户名和密码，可参见socket.io-chat-loginpro.js文件中的exports.userList
+}<br/>
+4.http://localhost:443/login<br/>
+管理后台的登录入口，如需增加用户名和密码，可参见socket.io-chat-loginpro.js文件中的exports.userList<br/>
