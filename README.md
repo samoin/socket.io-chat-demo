@@ -8,7 +8,7 @@ socket.io-chat-demo
 /**@author samoin
 *  @since 2013-05-21
 *  @desc 简单的运行，可以用demo包里的html和js，将他们复制出来放到外层目录，也可以直接启动服务"node socket.io-chat"。目前的demo提供简单的聊天室的功能，即登录，聊天，重复登录的处理等。管理功能提供了管理人员的登录以及相关查询的接口。socket.io-chat-loginpro.js文件中为目前抽取出来的可配置参数，里面有详细的备注和说明。
-*/
+*/\r\n
 关于url的文档：
 1.访问聊天室
 http://ip:port/chat
