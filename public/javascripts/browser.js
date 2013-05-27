@@ -9,7 +9,7 @@ chat.login = function (){
 };
 
 chat.connectServer = function(){	
-	chat.userName = $("#userName").val();
+	chat.userName = $("#chatUserName").val();
 	chat.moudle = $("#chatName").val();
 	chat.socket = io.connect();
 	chat.socket.on("connect",function(){
